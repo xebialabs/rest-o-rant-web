@@ -76,7 +76,7 @@ task createDockerfile(type: Dockerfile) {
 task buildDockerImage(type: DockerBuildImage) {
   dependsOn createDockerfile
   inputDir = createDockerfile.destFile.parentFile
-  tag = System.properties['docker.image.prefix']+"/rest-o-rant-web:$version"
+  tag = System.properties['docker.repository']+"/rest-o-rant-web:$version"
 }
 
 task wrapper(type: Wrapper) {
