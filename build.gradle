@@ -32,10 +32,22 @@ dependencies {
   compile group: 'log4j', name: 'log4j', version: '1.2.15', ext: 'jar'
 }
 
+
 docker {
-  url = 'https://192.168.99.100:2376'
-  certPath = new File(System.properties['user.home'], '.docker/machine/machines/dkr-dev')
+   url = System.properties['docker.client.url']
+   if (System.properties['docker.native'] == "false") {
+        certPath=new File(System.properties['docker.cert.path'])
+   }
+   if (System.properties['docker.remote_registry'] == "true") {
+     registryCredentials {
+         url = System.properties['docker.client.url']
+         username = System.properties['docker.registry.username']
+         password = System.properties['docker.registry.password']
+         email = System.properties['docker.registry.email']
+     }
+   }
 }
+
 
 task copyWebapp(type: Copy) {
   from('src/main/webapp')
@@ -52,14 +64,19 @@ task createDockerfile(type: Dockerfile) {
   destFile = project.file('build/docker/Dockerfile')
   from 'nginx'
   maintainer 'Vincent Partington <vpartington@xebialabs.com>'
+  environmentVariable('API_ENDPOINT','http://rest-o-rant-api:8080/')
+  environmentVariable('NGINX_LISTEN','80')
   copyFile('webapp', '/usr/share/nginx/html')
   copyFile('nginx', '/etc/nginx/conf.d')
+  addFile('https://github.com/kreuzwerker/envplate/releases/download/v0.0.8/ep-linux', '/usr/local/bin/ep')
+  runCommand('chmod +x /usr/local/bin/ep && chmod -R 777 /etc/nginx/conf.d && mkdir -p /var/cache/nginx && mkdir -p /var/run && chmod -R 777 /var/cache/nginx /var/run')
+  instruction('CMD ["/usr/local/bin/ep", "-v", "/etc/nginx/conf.d/*.conf", "--", "/usr/sbin/nginx", "-g", "daemon off;"]')
 }
 
 task buildDockerImage(type: DockerBuildImage) {
   dependsOn createDockerfile
   inputDir = createDockerfile.destFile.parentFile
-  tag = "dkr-reg:5000/rest-o-rant-web:$version"
+  tag = System.properties['docker.repository']+"/rest-o-rant-web:$version"
 }
 
 task wrapper(type: Wrapper) {
