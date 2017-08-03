@@ -1,39 +1,77 @@
 body {
-  background-image: url("../img/20870679835_ea9ba3a769_b.jpg");
-  background-size: cover;
+  background-color: #EEEEEE;
+  text-align:center;
+  background-position: center;
+   width: 750px;
+    margin: 0 auto;
 }
 
-#searchbar {
-  position: absolute;
-  left: 200px;
-  background-color: red;
-  height: 90px;
-  width: 500px;
+
+#rest-o-rant-title {
+  color: #333333;
+  textAlign: left;
+  lineHeight: 33;
+  font-family: OpenSans;
+  font-size: 24px;
+  color: #333333;
+  letter-spacing: 0;
+  position: center;
 }
+
+
+#rest-o-rant-heading {
+  color: #333333;
+  textAlign: left;
+  lineHeight: 43;
+  font-family: OpenSans;
+  font-size: 24px;
+  color: #333333;
+  letter-spacing: 0;
+  position: center;
+}
+
 
 #searchbox {
-position: absolute  ;
-  left: 20px;
-  width: 325px;
-  top: 20px;
-  height: 40px;
-  border: 3px;
-  padding: 3px;
+ type: shape;
+ rotation:0;
+ opacity:1;
+ radius:100;
+ background: url( ../img/searchicon.png) no-repeat 4px 4px #FFFFFF;
+ border: 1px solid rgba(0,0,0,0.10);
+ border-radius: 100px 0 0 100px;
+ font-size: 30px;
+
 }
 
 #searchbutton {
-  position: absolute;
-  right: 20px;
-  top: 18px;
-  width: 100px;
-  height: 50px;
-  background-image: url("../img/search_example_by_chongoregorges.jpg");
-  background-size: contain
+  type: shape;
+  opacity:1;
+  size: 100%;
+  background: #22A7F0;
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: 0 100px 100px 0;
+  color: #FFFFFF;
+  position: center;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 28px;
+
 }
 
 #searchresults {
-  position:absolute;
   background-color: white;
-  top: 200px;
-  width:80%
+  font-family: OpenSans;
+  font-size: 18px;
+  color: #333333;
+  letter-spacing: 0;
+  text-align: left;
+  width:80%;
+  padding: 10px;
+  border-bottom-style: solid;
+}
+
+#searchlist {
+ list-style: none;
+ border-bottom: thick;
 }
