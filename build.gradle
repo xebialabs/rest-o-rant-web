@@ -15,6 +15,7 @@ apply plugin: 'com.bmuschko.docker-remote-api'
 
 import com.bmuschko.gradle.docker.tasks.image.Dockerfile
 import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
+import com.bmuschko.gradle.docker.tasks.image.DockerPushImage
 
 repositories {
   mavenCentral()
@@ -34,18 +35,19 @@ dependencies {
 
 
 docker {
+
    url = System.properties['docker.client.url']
    if (System.properties['docker.native'] == "false") {
         certPath=new File(System.properties['docker.cert.path'])
    }
    if (System.properties['docker.remote_registry'] == "true") {
      registryCredentials {
-         url = System.properties['docker.client.url']
+         url = System.properties['docker.registry.url']
          username = System.properties['docker.registry.username']
          password = System.properties['docker.registry.password']
          email = System.properties['docker.registry.email']
      }
-   }
+  }
 }
 
 
@@ -80,8 +82,8 @@ task buildDockerImage(type: DockerBuildImage) {
 }
 
 task pushDockerImage(type: DockerPushImage) {
-  dependsOn commitImage
-  imageName = System.properties['docker.repository']+"/rest-o-rant-web:$version"
+  dependsOn buildDockerImage
+  imageName = System.properties['docker.repository']+"/rest-o-rant-web"
 }
 
 task wrapper(type: Wrapper) {
