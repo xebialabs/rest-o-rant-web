@@ -80,7 +80,8 @@ task buildDockerImage(type: DockerBuildImage) {
 }
 
 task pushDockerImage(type: DockerPushImage) {
-  imageId = 'rest-o-rant-web:'+$version
+  dependsOn commitImage
+  imageName = System.properties['docker.repository']+"/rest-o-rant-web:$version"
 }
 
 task wrapper(type: Wrapper) {
