@@ -79,6 +79,10 @@ task buildDockerImage(type: DockerBuildImage) {
   tag = System.properties['docker.repository']+"/rest-o-rant-web:$version"
 }
 
+task pushDockerImage(type: DockerPushImage) {
+  imageId = 'rest-o-rant-web:'+$version
+}
+
 task wrapper(type: Wrapper) {
   gradleVersion = '2.11'
 }
