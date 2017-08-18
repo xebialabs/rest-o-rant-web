@@ -1,9 +1,9 @@
 body {
-  background-color: #EEEEEE;
+  background-color: white;
   text-align:center;
   background-position: center;
-   width: 750px;
-    margin: 0 auto;
+  margin: 0 auto;
+  font-family:OpenSans;
 }
 
 
@@ -38,8 +38,9 @@ body {
  radius:100;
  background: url( ../img/searchicon.png) no-repeat 4px 4px #FFFFFF;
  border: 1px solid rgba(0,0,0,0.10);
- border-radius: 100px 0 0 100px;
+ border-radius: 5px 0 0 5px;
  font-size: 30px;
+ height:40px;
 
 }
 
@@ -49,13 +50,17 @@ body {
   size: 100%;
   background: #22A7F0;
   border: 1px solid rgba(0,0,0,0.10);
-  border-radius: 0 100px 100px 0;
+  border-radius: 0 5px 5px 0;
   color: #FFFFFF;
   position: center;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 28px;
+  font-size: 24px;
+  font-family: OpenSans;
+  height: 44px;
+  padding-top: 7px;
+  padding-bottom: 2px;
 
 }
 
@@ -66,7 +71,7 @@ body {
   color: #333333;
   letter-spacing: 0;
   text-align: left;
-  width:80%;
+  width:80%
   padding: 10px;
   border-bottom-style: solid;
 }
@@ -74,4 +79,189 @@ body {
 #searchlist {
  list-style: none;
  border-bottom: thick;
+}
+
+.grey-ruler{
+ background-color: #D5D5D5;
+ height: 3px;
+ border: 0;
+ width: 75%;
+}
+
+#rest-o-rant-sub-title span{
+ font-size: 14px;
+ font-weight: 600;
+ color: #333333;
+ text-transform: uppercase;
+ padding:20px;
+}
+
+#search-area{
+ background-image: url('../img/rest-o-rant-main-banner.png');
+ padding: 15% 0 15% 0;
+}
+
+#search-text{
+ font-size: 52px;
+ font-weight: 400;
+ color: #FFFFFF;
+}
+
+#rest-o-rant-footer{
+ background-color: #26506C;
+}
+
+.footer-section{
+ display: inline-block;
+ vertical-align:top;
+ font-family: OpenSans;
+ padding: 3% 0 3% 0;
+ margin-left: 10%;
+ margin-right: 10%;
+}
+
+.footer-heading{
+ font-size: 14px;
+ font-weight: 400;
+ color: #9a9a9a;
+ text-transform: uppercase;
+ margin-top: 15%;
+}
+
+.footer-text{
+ font-size:14px;
+ font-weight:400;
+ color: #FFFFFF;
+}
+
+#version{
+  font-size:14px;
+  font-weight:400;
+  color: #FFFFFF;
+}
+
+#rest-o-rant-content-area{
+ background-color: #D5D5D5;
+}
+
+#content-section{
+ background-color:#FFFFFF;
+ height: 80%;
+ width: 80%;
+ margin: 0 auto;
+ border-radius: 5px;
+ list-style-type: none;
+ padding-left: 0px;
+}
+
+#content-section li:not(:last-child) {
+ border-bottom: 2px solid #D5D5D5;
+}
+
+.content-div {
+  font-family: OpenSans;
+  letter-spacing: 0;
+  text-align: left;
+  padding: 20px 10px 10px 30px;
+}
+
+.content-div > div{
+  display: inline-block;
+  vertical-align:top;
+}
+
+.content-image-div{
+  width:20%;
+  padding-top:10px;
+  margin-right: 10px;
+}
+
+.content-image{
+  height: 200px;
+  border-radius: 10px;
+
+}
+
+.content-description > div{
+  padding:10px;
+}
+
+.rest-o-rant-name{
+  font-size:22px;
+  font-weight:400;
+  color: #333333;
+}
+
+.last-section{
+  float: right;
+}
+
+.icon-image{
+  height:20px;
+  padding-right:4px;
+}
+
+.rest-o-rant-content{
+}
+.content-description{
+    width:75%;
+    color: #747373;
+}
+
+.rest-o-rant-content > span:not(:last-child){
+  text-align: center;
+  margin-right:20px;
+}
+
+.time-slots {
+ background-color: #009cff;
+ color: #FFFFFF;
+ border-radius: 7px;
+ display: inline-block;
+ padding: 5px 25px 5px 25px;
+ font-size: 16px;
+ font-weight: 400;
+ margin-right: 15px;
+}
+
+.booking-number{
+  font-weight:600;
+  color: #333333;
+}
+
+.star_main{
+    color: #555;
+    font-size: 12px;
+    font-weight: normal;
+    margin: 0 40px 0 0;
+    display: inline-block;
+    line-height: normal;
+    border-right: none;
+    margin-right: 0;
+
+}
+
+.star{
+    background-image: url('../img/empty-star.svg');
+    height: 20px;
+    top: 0;
+    width: 100px;
+    background-repeat: repeat-x;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    background-size: 20px;
+}
+
+.colored-star{
+  width: 100px;
+  background-image: url('../img/star.svg');
+  height: 20px;
+  top: 0;
+  background-repeat: repeat-x;
+  display: inline-block;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  background-size: 20px;
 }

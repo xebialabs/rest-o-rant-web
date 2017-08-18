@@ -14,27 +14,92 @@
 <br>
 <br>
 <div id="rest-o-rant-title">
-    REST-o-rant
+    <img src="img/rest-o-rant-logo-blue.svg">
+    <hr class="grey-ruler">
+    <div id="rest-o-rant-sub-title">
+        <span>Choose a city</span><span>Sign In</span>
+    </div>
 </div>
 <br>
 <br>
-<div id="rest-o-rant-heading">
-    Find the best restaurants near you!
+<div id ="search-area">
+    <div id ="search-text">
+        Find the best restaurants near you!
+    </div>
+    <br>
+    <br>
+    <div>
+        <input id="searchbox" type="text" ng-model="q" restorant-enter="findRestaurants(q)">
+        <button id="searchbutton" ng-click="findRestaurants(q)">Search</button>
+    </div>
+    <br>
+    <br>
 </div>
-<br>
-<br>
-<input id="searchbox" type="text" ng-model="q" restorant-enter="findRestaurants(q)">
-<button id="searchbutton" ng-click="findRestaurants(q)">Search</button>
-<br>
-<br>
-<ul class="list-unstyled">
-    <li id="searchlist" ng-repeat="r in restaurants">
-        <div id="searchresults">
-            <span>{{r.name}}</span>
-            <p>{{r.snippet}}</p>
+<div id = "rest-o-rant-content-area">
+    <br>
+    <br>
+    <div >
+        <ul id="content-section">
+            <li ng-repeat="r in restaurants">
+                <div class ="content-div">
+                    <div class="content-image-div">
+                        <img src={{r.image}} class="content-image">
+                    </div>
+                    <div class="content-description">
+                        <div class="rest-o-rant-name">{{r.name}}</div>
+                        <div class="rest-o-rant-content">
+                            <div class="star_main">
+                                <span class="star">
+                                    <span class = "colored-star" ng-style="{width: r.rating*20 + 'px'}">
+                                    </span>
+                                </span>
+                            </div>
+                            <span>{{r.reviews}} Reviews</span>
+                            <span><img class="icon-image" src="img/like.svg">{{r.recommended}}% Recommended</span>
+                            <span class="money-section last-section">$$$$</span>
+                        </div>
+                        <div>
+                            <span>{{r.cuisine}}</span>
+                            <span class="last-section">{{r.location}}</span>
+                        </div>
+                        <div class="booking-number">
+                            <img src="img/increasing-chart.svg" class="icon-image">Booked {{r.booked}} times today
+                        </div>
+                        <div>
+                            <span class="time-slots">6:30 pm</span>
+                            <span class="time-slots">6:45 pm</span>
+                            <span class="time-slots">7:00 pm</span>
+                            <span class="time-slots">7:15 pm</span>
+                            <span class="time-slots">7:30 pm</span>
+                        </div>
+                    </div>
+
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <br>
+    <br>
+</div>
+<div id="rest-o-rant-footer">
+    <div class="footer-section"><img src="img/rest-o-rant-logo-white.svg"></div>
+    <div class="footer-section">
+        <div class="footer-heading">Links</div><br>
+        <div class="footer-text">
+            Choose a City<br>
+            Sign In
         </div>
-    </li>
-</ul>
+    </div>
+    <div class="footer-section">
+        <div class="footer-heading">Join Us On</div><br>
+        <div class="footer-text">
+            Twitter<br>
+            Facebook
+        </div>
+    </div>
+    <div id="version">Version 0.0.3 | Design by imoon | Code by Team Yoshi</div>
+</div>
 
 </body>
 </html>
