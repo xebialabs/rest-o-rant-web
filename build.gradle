@@ -66,7 +66,7 @@ task createDockerfile(type: Dockerfile) {
   destFile = project.file('build/docker/Dockerfile')
   from 'nginx'
   maintainer 'Vincent Partington <vpartington@xebialabs.com>'
-  environmentVariable('API_ENDPOINT','http://rest-o-rant-api:8080/')
+  environmentVariable('API_ENDPOINT','http://rest-o-rant-api:8080/rest-o-rant-api')
   environmentVariable('NGINX_LISTEN','80')
   copyFile('webapp', '/usr/share/nginx/html')
   copyFile('nginx', '/etc/nginx/conf.d')
