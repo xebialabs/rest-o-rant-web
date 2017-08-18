@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<udm.DeploymentPackage version="$version" application="rest-o-rant">
+  <application />
+  <orchestrator />
+  <deployables>
+    <aws.ecs.ServiceSpec name="/Rest-o-rant-Service">
+      <tags />
+      <taskPlacementTemplateName>One Task Per Host</taskPlacementTemplateName>
+      <volumes />
+      <networkMode>bridge</networkMode>
+      <serviceName>rest-o-rant</serviceName>
+      <desiredCount>2</desiredCount>
+      <waitForTasksNr>1</waitForTasksNr>
+      <role>{{aws_ecs_service_role}}</role>
+      <maxDrainRetryCount>120</maxDrainRetryCount>
+      <containerDefinitions>
+        <aws.ecs.ContainerDefinitionSpec name="/Rest-o-rant-Service/rest-o-rant-web">
+          <containerName>rest-o-rant-web</containerName>
+          <image>xebialabs/rest-o-rant-web:$version</image>
+          <softMemoryLimit>300</softMemoryLimit>
+          <links>
+            <value>rest-o-rant-api</value>
+          </links>
+          <mountPoints />
+          <portMappings>
+            <aws.ecs.PortSpec name="/Rest-o-rant-Service/rest-o-rant-web/80-port-mapping">
+              <hostPort>80</hostPort>
+              <containerPort>80</containerPort>
+            </aws.ecs.PortSpec>
+          </portMappings>
+        </aws.ecs.ContainerDefinitionSpec>
+        <aws.ecs.ContainerDefinitionSpec name="/Rest-o-rant-Service/rest-o-rant-api">
+          <containerName>rest-o-rant-api</containerName>
+          <image>xebialabs/rest-o-rant-api:$version</image>
+          <softMemoryLimit>300</softMemoryLimit>
+          <links />
+          <mountPoints />
+          <portMappings />
+        </aws.ecs.ContainerDefinitionSpec>
+      </containerDefinitions>
+      <loadBalancers>
+        <aws.ecs.LoadBalancerSpec name="/Rest-o-rant-Service/ecs-demo-alb">
+          <targetGroupArn>Name:ecs-target-group</targetGroupArn>
+          <containerName>rest-o-rant-web</containerName>
+          <containerPort>80</containerPort>
+        </aws.ecs.LoadBalancerSpec>
+      </loadBalancers>
+    </aws.ecs.ServiceSpec>
+  </deployables>
+  <applicationDependencies />
+  <dependencyResolution>LATEST</dependencyResolution>
+  <undeployDependencies>false</undeployDependencies>
+</udm.DeploymentPackage>
