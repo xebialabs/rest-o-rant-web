@@ -1,5 +1,5 @@
 pipeline {
-  agent { node { label 'docker' }}
+  agent { node { label 'docker||xlr||xld' }}
   parameters {
     string(defaultValue: "latest", description: 'version', name: 'version')
     string(defaultValue: "https://index.docker.io/v1", description: 'Docker registry url', name: 'dockerRegistryUrl')
